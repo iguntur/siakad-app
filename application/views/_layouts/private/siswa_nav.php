@@ -20,7 +20,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href='<?php echo base_url();?>siswa/data_nilai'><span>Lihat Nilai</span></a></li>
             <li class="divider"></li>
-            <li><a href='javascript:;'><span>Lihat Jadwal</span></a></li>
+            <li><a href='siswa/dashboard/jadwal_akademik'><span>Lihat Jadwal</span></a></li>
           </ul>
         </li>
       </ul>

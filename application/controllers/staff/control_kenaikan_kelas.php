@@ -30,7 +30,16 @@ $data['nip']       = $this->session->userdata('nip');
  | Select in siswa_table where kelas is same
 ***/
 $var_a = $this->a_model->getMyClass($data['nip']);
-if ($var_a == true) {
+if ($var_a == false) {
+    $this->session->set_flashdata("notif_result",
+    "<script type='text/javascript'>
+              $('.result').css('height', '100px').html('Oppss... <br/> Menu Ini Hanya Untuk <br/> Wali Kelas')
+                  .fadeIn(1000)
+                  .delay(2000)
+                  .fadeOut(1000)
+    </script>");
+    redirect( 'staff/dashboard' );
+} else {
     foreach ($var_a as $value) {
       $var_class = $value['kelas_jurusan'];
     }
@@ -40,10 +49,9 @@ if ($var_a == true) {
 
     // Get Siswa By $var_class
     $data['siswa_in_class'] = $this->db->query(" SELECT * FROM tabel_siswa WHERE kelas = '$var_class' ") -> result_array();
-
-} else {
-    $data['siswa_in_class'] = "Tidak Ada Data Siswa || Anda Bukan Wali Kelas";
 }
+
+
 
 /***
  | Split/Explode Data Siswa @field kelas

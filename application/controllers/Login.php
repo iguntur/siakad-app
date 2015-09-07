@@ -57,7 +57,6 @@ class Login extends CI_Controller {
 
     $this -> form_validation -> set_rules('username', 'User Name', 'trim|required');
     $this -> form_validation -> set_rules('password', 'Password', 'trim|required|md5');
-    // $user_login = $this -> a_model -> getUsers();
 
     if ($this -> form_validation -> run() == FALSE) { 
           redirect('login');
@@ -67,7 +66,6 @@ class Login extends CI_Controller {
           $username     = set_value('username');
           $password     = set_value('password');
           $is_loggin    = $this->el_model->login($username, $password);
-          // $is_loggin    = $this->a_model->user_login($username, $password);
           if ($is_loggin == FALSE) {
                 $this->session->set_flashdata('error', 'Salah Memasukkan Username atau Password');
                 redirect ('login');

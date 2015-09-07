@@ -68,6 +68,7 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'database' => 'sia',
+	// 'database' => 'app-siakad',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

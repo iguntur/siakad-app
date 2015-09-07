@@ -130,13 +130,25 @@ class Staff extends MY_Controller {
         
         $insert_staff = $this -> a_model -> QueryInsert ('tabel_pengajar', $data_staff);
         if ($insert_staff == TRUE) {
-          // $this->db->cache_delete('administrator', 'artikel_manager');
           $insert_user  = $this -> a_model -> QueryInsert ('users', $data_user);
 
-          $this->session->set_flashdata("notif_insert" , "<script> alert('Insert Data Sukses'); </script>");
+          $this->session->set_flashdata("notif_result",
+          "<script type='text/javascript'>
+                          $('.result').html('Insert Success!!!')
+                              .fadeIn(1000)
+                              .delay(1000)
+                              .fadeOut(1000)
+          </script>");
           redirect('administrator/staff');
         } else {
-          $this -> index();
+          $this->session->set_flashdata("notif_result",
+          "<script type='text/javascript'>
+                          $('.result').html('Insert Failed!!!')
+                              .fadeIn(1000)
+                              .delay(1000)
+                              .fadeOut(1000)
+          </script>");
+          redirect('administrator/staff');
         }
       }
   } /* End Insert */
@@ -247,10 +259,22 @@ class Staff extends MY_Controller {
         $update = $this -> a_model -> QueryUpdate ('tabel_pengajar', $data_valid, $where);
         
         if ($update == TRUE) {
-          // $this->db->cache_delete('administrator', 'artikel_manager');
-          $this->session->set_flashdata("notif_update" , "<script> alert('Update Data Sukses'); </script>");
+          $this->session->set_flashdata("notif_result",
+          "<script type='text/javascript'>
+                          $('.result').html('Update Success!!!')
+                              .fadeIn(1000)
+                              .delay(1000)
+                              .fadeOut(1000)
+          </script>");
           redirect('administrator/staff');
         } else {
+          $this->session->set_flashdata("notif_result",
+          "<script type='text/javascript'>
+                          $('.result').html('Update Failed!!!')
+                              .fadeIn(1000)
+                              .delay(1000)
+                              .fadeOut(1000)
+          </script>");
           redirect('administrator/staff');
         }
       }
@@ -268,14 +292,24 @@ class Staff extends MY_Controller {
     $delete = $this -> a_model -> QueryDelete ('tabel_pengajar', $where_id_staff);
 
     if ($delete == TRUE) {
-      // echo "Delete Sukses";
-      // $this->db->cache_delete_all();
       $delete_from_user = $this -> a_model -> QueryDelete ('users', $where_id_user);
+      $this->session->set_flashdata("notif_result",
+      "<script type='text/javascript'>
+                      $('.result').html('Insert Success!!!')
+                          .fadeIn(1000)
+                          .delay(1000)
+                          .fadeOut(1000)
+      </script>");
       redirect ('administrator/staff');
     } else {
+      $this->session->set_flashdata("notif_result",
+      "<script type='text/javascript'>
+                      $('.result').html('Insert Success!!!')
+                          .fadeIn(1000)
+                          .delay(1000)
+                          .fadeOut(1000)
+      </script>");
       redirect ('administrator/staff');
-      // echo "Delete Gagal";
-      // redirect ('administrator/artikel_manager/index');
     }
   }
 

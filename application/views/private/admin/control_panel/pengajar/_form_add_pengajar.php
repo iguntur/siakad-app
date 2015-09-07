@@ -90,7 +90,7 @@
                         </label> <br>
 
                 <label class="radio-inline">
-                    <input name="gol_darah" type="radio" value="O"> O
+                    <input name="golongan_darah" type="radio" value="O"> O
                         </label>
               </div>
           </div>

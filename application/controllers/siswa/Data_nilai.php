@@ -15,8 +15,6 @@ class Data_nilai extends MY_Controller {
 
     // Base
     $data['myAccount']    = $this->session->userdata('nama_awal');
-    // $data['kelas']        = $this -> a_model -> getKelas();
-    // $data['jurusan']      = $this -> a_model -> getJurusan();
     $data['tahun_ajaran'] = $this -> a_model -> getTahunAjaran();
 
     $this->load->view('private/siswa/control_panel/select_to_view', $data);

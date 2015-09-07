@@ -9,6 +9,21 @@ if ( $this->session->userdata('hak_akses') != 2 ) {
     $this->session->set_flashdata('error', "<script> alert('Anda Bukan Guru'); </script>");
     redirect( 'login' );
 }
+/***
+ | Session 
+***/
+$eq = $this->session->userdata('nip');
+$check = $this->db->query("SELECT guru_bid_studi FROM tabel_pengajar
+                          WHERE nip = '$eq'
+        ");
+
+// echo "<pre>";
+// print_r ($check);
+// echo "</pre>";
+
+
+
+
 /* End Construct ------------------------------------------------------------------*/ }
 
 // Function / Method Index
@@ -108,6 +123,15 @@ if ($jaGlobal == false) {
 // Default Return False
 return false;
 /* End GET VIEW JADWAL ------------------------------------------------------------------*/ }
+// Check Session
+function getSession() {
+    // echo "OKE";
+/* End Cek Session ------------------------------------------------------------------*/ }
+
+
+
+
+
 
 
 /* End of file guru.php */
