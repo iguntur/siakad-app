@@ -5,9 +5,9 @@ Program ini dibuat khusus untuk sistem informasi akademik sekolah SMK atau setar
 ## Development
 
 - PHP Framework [Codeigniter](http://codeigniter.com/)
-- Bootstrap Framework [Bootstrap](http://getbootstrap.com/)
+- CSS Framework [Bootstrap](http://getbootstrap.com/)
 - SASS Stylesheet Engine
-- Gulp
+- Gulp [**`npm`**]
 
 ## Kebutuhan Sistem
 
