@@ -69,8 +69,6 @@
           <ul class="dropdown-menu" role="menu">
             <li class='has-sub'><a href="<?php echo base_url(); ?>administrator/setting">Setup Admin</a></li>
             <li class="divider"></li>
-            <li class='has-sub'><a href='<?php echo base_url(); ?>administrator/users'><span>Setup Users</span></a></li>
-            <li class="divider"></li>
             <li class='has-sub'><a href="<?php echo base_url(); ?>logout">Log Out</a></li>
           </ul>
         </li>        
