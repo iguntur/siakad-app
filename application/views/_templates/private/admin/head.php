@@ -8,7 +8,7 @@
     <meta name="description" content="Meta Descriptions Disini">
     <meta name="keyword" keyword="Meta key disini">
 
-    <base href=" <?php echo base_url(); ?> ">
+    <base href="<?php echo base_url(); ?>">
 
     <!-- External CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

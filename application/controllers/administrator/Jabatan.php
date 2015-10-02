@@ -42,7 +42,6 @@ class Jabatan extends MY_Controller {
         $insert = $this -> a_model -> QueryInsert ('jabatan', $data_valid);
 
         if ($insert == TRUE) {
-          // $this->db->cache_delete('administrator', 'artikel_manager');
           $this->session->set_flashdata("notif_result",
           "<script type='text/javascript'>
                           $('.result').html('Insert Success!!!')

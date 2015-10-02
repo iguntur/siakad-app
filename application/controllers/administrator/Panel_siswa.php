@@ -112,63 +112,81 @@ class Panel_siswa extends MY_Controller {
             'label'   =>  'Alamat',
             'rules'   =>  'trim'
             )
-      );
+    );
 
 
-      $this->form_validation->set_rules($validations);
-      if ($this->form_validation -> run() == FALSE) {
+    $this->form_validation->set_rules($validations);
+    if ($this->form_validation -> run() == FALSE) {
         // Jika Ada Kesalahan Buka Ini
         redirect('administrator/panel_siswa');
-      } else {
-        // Jika Tidak ada kesalahan, eksekusi perintah ini...
-        $data_siswa = array (
-            'nis'            => $this -> input -> post ('nis'),
-            'id_user'        => $this -> input -> post ('nis'),
-            'nama_siswa'     => $this -> input -> post ('nama_siswa'),
-            'nama_ayah'      => $this -> input -> post ('nama_ayah'),
-            'nama_ibu'       => $this -> input -> post ('nama_ibu'),
-            'kelas'          => $this -> input -> post ('kelas'),
-            'angkatan'       => $this -> input -> post ('tahun_ajaran'),
-            'ttl_location'   => $this -> input -> post ('ttl_location'),
-            'ttl_date'       => $this -> input -> post ('ttl_date'),
-            'phone'          => $this -> input -> post ('phone'),
-            'gender'         => $this -> input -> post ('gender'),
-            'golongan_darah' => $this -> input -> post ('golongan_darah'),
-            'email'          => $this -> input -> post ('email'),
-            'agama'          => $this -> input -> post ('agama'),
-            'alamat'         => $this -> input -> post ('alamat')
+    } else {
+        // Cek NIS Jika Tersedia
+        $nis_input = $this->input->post('nis');
+        $status = $this->b_model->getAvailable_Nis($nis_input);
+        if ($status == true) {
+          $this->session->set_flashdata("notif_result",
+          "<script type='text/javascript'>
+                          $('.result').html('Terjadi Kesalahan <br/> NIS Sudah Terpakai.')
+                              .css('background', '#F1D70E')
+                              .css('height', '62px')
+                              .fadeIn(1000)
+                              .delay(2000)
+                              .fadeOut(1000)
+          </script>");
+          redirect('administrator/panel_siswa');
+        } elseif ($status == false) {
+            // Jika Semua Syarat Sudah Benar
+            // Dan Tidak ada kesalahan
+            // eksekusi perintah ini.
+            $data_siswa = array (
+                'nis'            => $this -> input -> post ('nis'),
+                'id_user'        => $this -> input -> post ('nis'),
+                'nama_siswa'     => $this -> input -> post ('nama_siswa'),
+                'nama_ayah'      => $this -> input -> post ('nama_ayah'),
+                'nama_ibu'       => $this -> input -> post ('nama_ibu'),
+                'kelas'          => $this -> input -> post ('kelas'),
+                'angkatan'       => $this -> input -> post ('tahun_ajaran'),
+                'ttl_location'   => $this -> input -> post ('ttl_location'),
+                'ttl_date'       => $this -> input -> post ('ttl_date'),
+                'phone'          => $this -> input -> post ('phone'),
+                'gender'         => $this -> input -> post ('gender'),
+                'golongan_darah' => $this -> input -> post ('golongan_darah'),
+                'email'          => $this -> input -> post ('email'),
+                'agama'          => $this -> input -> post ('agama'),
+                'alamat'         => $this -> input -> post ('alamat')
             );
 
-        $password_default = md5("admin");
-        $hak_akses        = 3;
-        $data_user   = array (
-            'id_user'      => $this -> input -> post ('nis'),
-            'nama_user'    => $this -> input -> post ('nama_siswa'),
-            'hak_akses'    => $hak_akses,
-            'password'     => $password_default
-          );
+            $password_default = md5("admin");
+            $hak_akses        = 3;
+            $data_user   = array (
+                'id_user'      => $this -> input -> post ('nis'),
+                'nama_user'    => $this -> input -> post ('nama_siswa'),
+                'hak_akses'    => $hak_akses,
+                'password'     => $password_default
+              );
 
-        $insert_siswa = $this -> a_model -> QueryInsert ('tabel_siswa', $data_siswa);
-        
-        if ($insert_siswa == TRUE) {
-          $insert_user  = $this -> a_model -> QueryInsert ('users', $data_user);
-          $this->session->set_flashdata("notif_result",
-          "<script type='text/javascript'>
-                          $('.result').html('Insert Success!!!')
-                              .fadeIn(1000)
-                              .delay(1000)
-                              .fadeOut(1000)
-          </script>");
-          redirect('administrator/panel_siswa');
-        } else {
-          $this->session->set_flashdata("notif_result",
-          "<script type='text/javascript'>
-                          $('.result').html('Insert Failed!!!')
-                              .fadeIn(1000)
-                              .delay(1000)
-                              .fadeOut(1000)
-          </script>");
-          redirect('administrator/panel_siswa');
+            $insert_siswa = $this -> a_model -> QueryInsert ('tabel_siswa', $data_siswa);
+
+            if ($insert_siswa == TRUE) {
+              $insert_user  = $this -> a_model -> QueryInsert ('users', $data_user);
+              $this->session->set_flashdata("notif_result",
+              "<script type='text/javascript'>
+                              $('.result').html('Insert Success!!!')
+                                  .fadeIn(1000)
+                                  .delay(1000)
+                                  .fadeOut(1000)
+              </script>");
+              redirect('administrator/panel_siswa');
+            } else {
+              $this->session->set_flashdata("notif_result",
+              "<script type='text/javascript'>
+                              $('.result').html('Insert Failed!!!')
+                                  .fadeIn(1000)
+                                  .delay(1000)
+                                  .fadeOut(1000)
+              </script>");
+              redirect('administrator/panel_siswa');
+            }
         }
       }
   } /* End Insert */
@@ -349,6 +367,18 @@ class Panel_siswa extends MY_Controller {
       </script>");
       redirect('administrator/panel_siswa');
       // echo "Delete Gagal";
+    }
+  }
+
+  public function cekNis() {
+    $input_nis = $_GET['nis'];
+    $status = $this->b_model->getAvailable_Nis($input_nis);
+    if ($status == true) {
+      // Not Available
+      echo "failed";
+    } else {
+      // Available
+      echo "succes";
     }
   }
 

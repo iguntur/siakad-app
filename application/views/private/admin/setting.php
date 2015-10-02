@@ -37,6 +37,7 @@
 
 <?php echo form_close(); ?>
 
+<hr>
 
 <!-- End Sections -->
 

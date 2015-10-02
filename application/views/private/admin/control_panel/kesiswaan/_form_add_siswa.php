@@ -1,6 +1,6 @@
 <div class="container-fluid" style="margin-top: 25px" >
 <?php echo
-  form_open_multipart('administrator/panel_siswa/insert', "class='form-horizontal col-md-12'");
+  form_open_multipart('administrator/panel_siswa/insert', "class='form-horizontal col-md-12' autocomplete='off'");
 ?>
 <h4><?php echo validation_errors(); ?></h4>
 
@@ -12,7 +12,8 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">N I S</label>
       <div class="col-sm-10">
-        <input required="required" name="nis" type="text" class="form-control" placeholder="NIS">
+        <input id="inputNis" required="required" name="nis" type="number" class="form-control" placeholder="NIS" value="">
+        <span class="nis-invalid" style="display:none"></span>
       </div>
     </div>
 

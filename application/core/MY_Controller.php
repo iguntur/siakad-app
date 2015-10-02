@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MY_Controller extends CI_Controller {
 
-
-
   public function __construct() {
     parent::__construct();
     if ( ! $this->session->userdata('username')) {
@@ -19,9 +17,10 @@ class MY_Controller extends CI_Controller {
 
 
 
-    // Load Database
+    // Load Model
     // $this->load->model('el_model');
     $this->load->model('a_model');
+    $this->load->model('b_model');
   }
 
 }

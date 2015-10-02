@@ -1,6 +1,6 @@
 <div class="container-fluid" style="margin-top: 25px" >
   <?php echo
-  form_open_multipart('administrator/staff/insert', "class='form-horizontal col-md-12'");
+  form_open_multipart('administrator/staff/insert', "class='form-horizontal col-md-12' autocomplete='off'");
   ?>
   <h4><?php echo validation_errors(); ?></h4>
 
@@ -13,7 +13,8 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">N I P</label>
       <div class="col-sm-10">
-        <input required="required" name="nip" type="text" class="form-control" placeholder="NIP">
+        <input id="inputNip" required="required" name="nip" type="number" class="form-control" placeholder="NIP">
+        <span class="nip-invalid" style="display:none"></span>
       </div>
     </div>
 

@@ -21,7 +21,7 @@
         <span><?php if ($wali_kelas['guru_bid_studi'] == false ) { echo "Bidang Studi Tidak Tersedia"; } else { echo $wali_kelas['guru_bid_studi']; } ?></span>
     </div>
 
-    <div class="col-md-6 pull-right">
+    <div class="col-md-6 alert alert-info pull-right">
         <div class="class-center">
             <button class="btn btn-lg btn-primary">Proses All</button>
         </div> <br>
@@ -31,6 +31,12 @@
             <li>Untuk memproses data per siswa, silahkan abaikan tombol di atas dan proses pada kolom siswa masing-masing.</li>
         </ol>
     </div>
+<hr>
+
+<div class="alert alert-warning class-center">
+    <h2>Fitur Ini Hanya Contoh / Demo <br> & <br> Belum Akan Dikembangkan <br> Sampai Batas Waktu Yang Belum Ditentukan!!! </h2>
+</div>
+
 </div>
 <hr>
 
@@ -52,6 +58,12 @@
                     <label for="gender-siswa"><?php echo $value['gender']; ?></label>
                     <label for="phone-siswa">0<?php echo $value['phone']; ?></label>
                 </div>
+
+                <div class="col-sm-12">
+                    <button class="btn btn-success" title="Klik Jika Memenuhi Syarat"> <i class="fa fa-check"></i> Naik Kelas</button>
+                    <button class="btn btn-danger" title="Klik Jika Tidak Memenuhi Syarat"> <i class="fa fa-close"></i> Tidak Naik Kelas</button>
+                </div>
+
             </div>
         </div>
 <!-- END KOLOM BIODATA -->
@@ -83,7 +95,7 @@
 </div> <!-- END ROW -->
 <?php endforeach; ?>
 <!-- end loop siswa -->
-
+<div style="margin-bottom: 100px;">&nbsp;</div>
 <script type="text/javascript">
 $(document).ready(function() {
     $(".panel-heading").css('cursor','pointer');
@@ -91,15 +103,12 @@ $(document).ready(function() {
 
     var grabNis = $(".select-peer");
     $(grabNis).click(function() {
-
         var reqNis  = $(this).attr("data-req-nis");
         var reqSeem = $(this).attr("data-req-seems");
         $.ajax({
-
             type    : 'GET',
             url     : uri + 'staff/control_kenaikan_kelas/reqNilai',
-            data    : { nis: reqNis, 
-                        semester: reqSeem },
+            data    : { nis: reqNis, semester: reqSeem },
             success : function(result) {
                       // Result
                       if (reqSeem == 'I') {

@@ -93,62 +93,76 @@ class Staff extends MY_Controller {
             'label'   =>  'Bidang Studi',
             'rules'   =>  'trim'
             )
-      );
+    );
 
-
-      $this->form_validation->set_rules($validations);
-      if ($this->form_validation -> run() == FALSE) {
-        // Jika Ada Kesalahan Buka Ini
-        $this->index();
-      } else {
-        // Jika Tidak ada kesalahan, eksekusi perintah ini...
-        $data_staff = array (
-            'nip'            => $this -> input -> post ('nip'),
-            'id_user'        => $this -> input -> post ('nip'),            
-            'nama_pengajar'  => $this -> input -> post ('nama_pengajar'),
-            'ttl_location'   => $this -> input -> post ('ttl_location'),
-            'ttl_date'       => $this -> input -> post ('ttl_date'),
-            'phone'          => $this -> input -> post ('phone'),
-            'gender'         => $this -> input -> post ('gender'),
-            'golongan_darah' => $this -> input -> post ('golongan_darah'),
-            'email'          => $this -> input -> post ('email'),
-            'alamat'         => $this -> input -> post ('alamat'),
-            'jabatan'        => $this -> input -> post ('jabatan'),
-            'agama'          => $this -> input -> post ('agama'),
-            'guru_bid_studi' => $this -> input -> post ('guru_bid_studi')
-          );
-
-        $password_default = md5("admin");
-        $hak_akses        = 2;
-        $data_user   = array (
-            'id_user'      => $this -> input -> post ('nip'),
-            'nama_user'    => $this -> input -> post ('nama_pengajar'),
-            'hak_akses'    => $hak_akses,
-            'password'     => $password_default
-          );
-
-        
-        $insert_staff = $this -> a_model -> QueryInsert ('tabel_pengajar', $data_staff);
-        if ($insert_staff == TRUE) {
-          $insert_user  = $this -> a_model -> QueryInsert ('users', $data_user);
-
+    $this->form_validation->set_rules($validations);
+    if ($this->form_validation -> run() == FALSE) {
+      // Jika Ada Kesalahan Buka Ini
+      $this->index();
+    } else {
+        // Cek NIP Jika Tersedia
+        $nip_input = $this->input->post('nip');
+        $status = $this->b_model->getAvailable_Nip($nip_input);
+        if ($status == true) {
           $this->session->set_flashdata("notif_result",
           "<script type='text/javascript'>
-                          $('.result').html('Insert Success!!!')
+                          $('.result').html('Terjadi Kesalahan <br/> NIP Sudah Terpakai.')
+                              .css('background', '#F1D70E')
+                              .css('height', '62px')
                               .fadeIn(1000)
-                              .delay(1000)
+                              .delay(2000)
                               .fadeOut(1000)
           </script>");
           redirect('administrator/staff');
-        } else {
-          $this->session->set_flashdata("notif_result",
-          "<script type='text/javascript'>
-                          $('.result').html('Insert Failed!!!')
-                              .fadeIn(1000)
-                              .delay(1000)
-                              .fadeOut(1000)
-          </script>");
-          redirect('administrator/staff');
+        } elseif ($status == false) {
+          // Jika Tidak ada kesalahan, eksekusi perintah ini...
+          $data_staff = array (
+              'nip'            => $this -> input -> post ('nip'),
+              'id_user'        => $this -> input -> post ('nip'),
+              'nama_pengajar'  => $this -> input -> post ('nama_pengajar'),
+              'ttl_location'   => $this -> input -> post ('ttl_location'),
+              'ttl_date'       => $this -> input -> post ('ttl_date'),
+              'phone'          => $this -> input -> post ('phone'),
+              'gender'         => $this -> input -> post ('gender'),
+              'golongan_darah' => $this -> input -> post ('golongan_darah'),
+              'email'          => $this -> input -> post ('email'),
+              'alamat'         => $this -> input -> post ('alamat'),
+              'jabatan'        => $this -> input -> post ('jabatan'),
+              'agama'          => $this -> input -> post ('agama'),
+              'guru_bid_studi' => $this -> input -> post ('guru_bid_studi')
+            );
+
+            $password_default = md5("admin");
+            $hak_akses        = 2;
+            $data_user   = array (
+                'id_user'      => $this -> input -> post ('nip'),
+                'nama_user'    => $this -> input -> post ('nama_pengajar'),
+                'hak_akses'    => $hak_akses,
+                'password'     => $password_default
+              );
+
+            $insert_staff = $this -> a_model -> QueryInsert ('tabel_pengajar', $data_staff);
+            if ($insert_staff == TRUE) {
+              $insert_user  = $this -> a_model -> QueryInsert ('users', $data_user);
+
+              $this->session->set_flashdata("notif_result",
+              "<script type='text/javascript'>
+                              $('.result').html('Insert Success!!!')
+                                  .fadeIn(1000)
+                                  .delay(1000)
+                                  .fadeOut(1000)
+              </script>");
+              redirect('administrator/staff');
+            } else {
+              $this->session->set_flashdata("notif_result",
+              "<script type='text/javascript'>
+                              $('.result').html('Insert Failed!!!')
+                                  .fadeIn(1000)
+                                  .delay(1000)
+                                  .fadeOut(1000)
+              </script>");
+              redirect('administrator/staff');
+            }
         }
       }
   } /* End Insert */
@@ -310,6 +324,20 @@ class Staff extends MY_Controller {
                           .fadeOut(1000)
       </script>");
       redirect ('administrator/staff');
+    }
+  }
+
+
+  // Cek Nip
+  public function cekNip() {
+    $input_nip = $_GET['nip'];
+    $status = $this->b_model->getAvailable_Nip($input_nip);
+    if ($status == true) {
+      // Not Available
+      echo "failed";
+    } else {
+      // Available
+      echo "succes";
     }
   }
 
