@@ -1,6 +1,5 @@
 .idea
 .brackets.json
 
-/node_modules/
-/_resources/
-/_sql/
+/node_modules
+/_resources
