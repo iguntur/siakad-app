@@ -7,14 +7,14 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/kelas/update/'.$n['id_kelas']); ?>
-      <input readonly hidden name="id_kelas" required="required" value="<?php echo $n ['id_kelas']; ?>" type="text">
+      <?php echo form_open('administrator/kelas/update/' . $n['id_kelas']); ?>
+      <input readonly hidden name="id_kelas" required="required" value="<?php echo $n['id_kelas']; ?>" type="text">
 
         <!-- Nama Kelas -->
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Nama Kelas</span>
-            <input name="nama_kelas" required="required" value="<?php echo $n ['nama_kelas']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_kelas" required="required" value="<?php echo $n['nama_kelas']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
@@ -24,7 +24,7 @@
             <span class="input-group-addon wd-addon">Nama Jurusan</span>
             <select name="nama_jurusan" class="form-control" required="required">
 
-              <option value="<?php echo $n['nama_jurusan'] ?>"><?php echo $n['nama_jurusan'] ?></option>
+              <option value="<?php echo $n['nama_jurusan']; ?>"><?php echo $n['nama_jurusan']; ?></option>
 
               <option value="">Pilih Jurusan</option>
               <?php foreach ($jurusan as $key_nj): ?>
@@ -44,7 +44,7 @@
 
               <option value="Belum Ada Wali Kelas">Tentukan Wali Kelas</option>
               <?php foreach ($wali_kelas as $y): ?>
-              <option value="<?php echo $y['nip'] ?>"> <?php echo $y['nip'] ?> | <?php echo $y['nama_pengajar'] ?></option>
+              <option value="<?php echo $y['nip']; ?>"> <?php echo $y['nip']; ?> | <?php echo $y['nama_pengajar']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

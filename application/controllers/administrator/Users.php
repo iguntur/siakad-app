@@ -1,297 +1,270 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users extends MY_Controller {
+defined('BASEPATH') or exit('No direct script access allowed');
 
-  public function __construct()
-  {
-    parent::__construct();
-    if ( $this->session->userdata('hak_akses') != 1 ) {
-      $this->session->set_flashdata('error', "<script> alert('Anda Bukan Adminstrator'); </script> ");
-      redirect( 'login' );
-    }
-  }
+class Users extends MY_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
 
-  // Functions Index
-  function index() {
-    $data['users']     = $this -> a_model -> getUsers();
-    $data['myAccount'] = $this->session->userdata('nama_awal');
-    $this -> load -> view('private/admin/control_panel/users/user_panel', $data);
-  } /* End index */
+		if ($this->session->userdata('hak_akses') != 1) {
+			$this->session->set_flashdata('error', "<script> alert('Anda Bukan Adminstrator'); </script> ");
+			redirect('login');
+		}
+	}
 
-  // -----------------------------------------------------------------------
-  function aktivasi_siswa($id_user = NULL) {
-    $data['myAccount'] = $this->session->userdata('nama_awal');
-    $id_to_update = $id_user;
+	public function index()
+	{
+		$data['users'] = $this->a_model->getUsers();
+		$data['myAccount'] = $this->session->userdata('nama_awal');
+		$this->load->view('private/admin/control_panel/users/user_panel', $data);
+	}
 
-    $validations = array (
-          array (
-            'field'   =>  'id_user',
-            'label'   =>  'ID User',
-            'rules'   =>  'required|trim'
-            ),
+	public function aktivasi_siswa($id_user = null)
+	{
+		$data['myAccount'] = $this->session->userdata('nama_awal');
+		$id_to_update = $id_user;
 
-          array (
-            'field'   =>  'username',
-            'label'   =>  'Username',
-            'rules'   =>  'required|trim'
-            )
-      );
+		$validations = [
+		  [
+			'field' => 'id_user',
+			'label' => 'ID User',
+			'rules' => 'required|trim',
+			],
 
-    $this->form_validation->set_rules($validations);
-    if ($this->form_validation -> run() == FALSE) {
-      // Jika Ada Kesalahan Buka Ini
-      redirect('administrator/panel_siswa');
-    } else {
-      // Jika Tidak ada kesalahan, eksekusi perintah ini...
-      // Cek username yang tersedia
+		  [
+			'field' => 'username',
+			'label' => 'Username',
+			'rules' => 'required|trim',
+			],
+	  ];
 
-      $this->load->model('b_model');
-      $username = $this -> input -> post ('username');
-      $check_username = $this -> b_model -> getAvailable_Username($username);
-      if ($check_username == FALSE) {
-        # Jika username telah dipakai
-        $this->session->set_flashdata("notif_update" , "<script> alert('Username Sudah Terpakai, Silahkan Gunakan Username yang lain!...'); </script>");
-        redirect('administrator/panel_siswa');
+		$this->form_validation->set_rules($validations);
 
-      } elseif ($check_username == TRUE) {
-                # Jika username tersedia
-                /*-----------------*/
+		if ($this->form_validation->run() == false) {
+			redirect('administrator/panel_siswa');
+		} else {
+			$this->load->model('b_model');
 
-                $data_valid = array (
-                    'id_user'   => $this -> input -> post ('id_user'),
-                    'username'  => $this -> input -> post ('username')
+			$username = $this->input->post('username');
+			$check_username = $this->b_model->getAvailable_Username($username);
 
-                  );
+			if ($check_username == false) {
+				$this->session->set_flashdata('notif_update', "<script> alert('Username Sudah Terpakai, Silahkan Gunakan Username yang lain!...'); </script>");
 
-                $where = array('id_user' => $id_to_update);
+				redirect('administrator/panel_siswa');
+			} elseif ($check_username == true) {
+				$data_valid = [
+					'id_user' => $this->input->post('id_user'),
+					'username' => $this->input->post('username'),
 
-                $update = $this -> a_model -> QueryUpdate ('users', $data_valid, $where);
-                
-                if ($update == TRUE) {
-                  // $this->db->cache_delete('administrator', 'artikel_manager');
-                  $this->session->set_flashdata("notif_update" , "<script> alert('Update Data Sukses'); </script>");
-                  redirect('administrator/panel_siswa');
-                } else {
-                  redirect('administrator/panel_siswa');
-                }
-        }/*-----------------*/
+				  ];
 
-      }
-  } /* End Update Siswa */
+				$where = ['id_user' => $id_to_update];
 
-  // -----------------------------------------------------------------------
-  function aktivasi_staff($id_user = NULL) {
-    $data['myAccount'] = $this->session->userdata('nama_awal');
-    $id_to_update = $id_user;
+				$update = $this->a_model->QueryUpdate('users', $data_valid, $where);
 
-    $validations = array (
-          array (
-            'field'   =>  'id_user',
-            'label'   =>  'ID User',
-            'rules'   =>  'required|trim'
-            ),
+				if ($update == true) {
+					// $this->db->cache_delete('administrator', 'artikel_manager');
+					$this->session->set_flashdata('notif_update', "<script> alert('Update Data Sukses'); </script>");
+					redirect('administrator/panel_siswa');
+				} else {
+					redirect('administrator/panel_siswa');
+				}
+			}
+		}
+	}
 
-          array (
-            'field'   =>  'username',
-            'label'   =>  'Username',
-            'rules'   =>  'required|trim'
-            )
-      );
+	public function aktivasi_staff($id_user = null)
+	{
+		$data['myAccount'] = $this->session->userdata('nama_awal');
+		$id_to_update = $id_user;
 
-    $this->form_validation->set_rules($validations);
-    if ($this->form_validation -> run() == FALSE) {
-      // Jika Ada Kesalahan Buka Ini
-      redirect('administrator/staff');
-    } else {
-      // Jika Tidak ada kesalahan, eksekusi perintah ini...
-      // Cek username yang tersedia
+		$validations = [
+		  [
+			'field' => 'id_user',
+			'label' => 'ID User',
+			'rules' => 'required|trim',
+			],
 
-      $this->load->model('b_model');
-      $username = $this -> input -> post ('username');
-      $check_username = $this -> b_model -> getAvailable_Username($username);
-      if ($check_username == FALSE) {
-        # Jika username telah dipakai
-        $this->session->set_flashdata("notif_update" , "<script> alert('Username Sudah Terpakai, Silahkan Gunakan Username yang lain!...'); </script>");
-        redirect('administrator/staff');
+		  [
+			'field' => 'username',
+			'label' => 'Username',
+			'rules' => 'required|trim',
+			],
+	  ];
 
-      } elseif ($check_username == TRUE) {
-                # Jika username tersedia
-                /*-----------------*/
+		$this->form_validation->set_rules($validations);
 
-                $data_valid = array (
-                    'id_user'   => $this -> input -> post ('id_user'),
-                    'username'  => $this -> input -> post ('username')
+		if ($this->form_validation->run() == false) {
+			redirect('administrator/staff');
+		} else {
+			$this->load->model('b_model');
+			$username = $this->input->post('username');
+			$check_username = $this->b_model->getAvailable_Username($username);
 
-                  );
+			if ($check_username == false) {
+				$this->session->set_flashdata('notif_update', "<script> alert('Username Sudah Terpakai, Silahkan Gunakan Username yang lain!...'); </script>");
+				redirect('administrator/staff');
+			} elseif ($check_username == true) {
+				$data_valid = [
+					'id_user' => $this->input->post('id_user'),
+					'username' => $this->input->post('username'),
 
-                $where = array('id_user' => $id_to_update);
+				  ];
 
-                $update = $this -> a_model -> QueryUpdate ('users', $data_valid, $where);
-                
-                if ($update == TRUE) {
-                  // $this->db->cache_delete('administrator', 'artikel_manager');
-                  $this->session->set_flashdata("notif_update" , "<script> alert('Update Data Sukses'); </script>");
-                  redirect('administrator/staff');
-                } else {
-                  redirect('administrator/staff');
-                }
-        }/*-----------------*/
+				$where = ['id_user' => $id_to_update];
 
-      }
-  } /* End Update Guru */
+				$update = $this->a_model->QueryUpdate('users', $data_valid, $where);
 
-  
+				if ($update == true) {
+					// $this->db->cache_delete('administrator', 'artikel_manager');
+					$this->session->set_flashdata('notif_update', "<script> alert('Update Data Sukses'); </script>");
+					redirect('administrator/staff');
+				} else {
+					redirect('administrator/staff');
+				}
+			}
+		}
+	}
 
+	public function insert()
+	{
+		$data['users'] = $this->a_model->getUsers();
 
-  // -----------------------------------------------------------------------
-  // Functions Insert
-  function insert() {
-    $data['users'] = $this -> a_model -> getUsers();
+		$validations = [
+		  [
+			'field' => 'id_user',
+			'label' => 'ID User',
+			'rules' => 'required|trim',
+			],
 
-    $validations = array (
-          array (
-            'field'   =>  'id_user',
-            'label'   =>  'ID User',
-            'rules'   =>  'required|trim'
-            ),
+		  [
+			'field' => 'hak_akses',
+			'label' => 'Hak Akses',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'hak_akses',
-            'label'   =>  'Hak Akses',
-            'rules'   =>  'required|trim'
-            ),        
+		  [
+			'field' => 'nama_user',
+			'label' => 'Nama User',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'nama_user',
-            'label'   =>  'Nama User',
-            'rules'   =>  'required|trim'
-            ),    
+		  [
+			'field' => 'username',
+			'label' => 'Username',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'username',
-            'label'   =>  'Username',
-            'rules'   =>  'required|trim'
-            ),
+		  [
+			'field' => 'password',
+			'label' => 'Password',
+			'rules' => 'required|md5',
+			],
+	  ];
 
-          array (
-            'field'   =>  'password',
-            'label'   =>  'Password',
-            'rules'   =>  'required|md5'
-            )
-      );
+		$this->form_validation->set_rules($validations);
 
+		if ($this->form_validation->run() == false) {
+			$this->load->view('private/admin/dashboard', $data);
+		} else {
+			$data_valid = [
+			'id_user' => $this->input->post('id_user'),
+			'hak_akses' => $this->input->post('hak_akses'),
+			'nama_user' => $this->input->post('nama_user'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+		  ];
 
-      $this->form_validation->set_rules($validations);
-      if ($this->form_validation -> run() == FALSE) {
-        // Jika Ada Kesalahan Buka Ini
-        $this->load->view('private/admin/dashboard', $data);
-      } else {
-        // Jika Tidak ada kesalahan, eksekusi perintah ini...
-        $data_valid = array (
-            'id_user'   => $this -> input -> post ('id_user'),
-            'hak_akses' => $this -> input -> post ('hak_akses'),
-            'nama_user' => $this -> input -> post ('nama_user'),
-            'username'  => $this -> input -> post ('username'),
-            'password'  => $this -> input -> post ('password')
-          );
+			$insert = $this->a_model->QueryInsert('users', $data_valid);
 
-        $insert = $this -> a_model -> QueryInsert ('users', $data_valid);
-        
-        if ($insert == TRUE) {
-          // $this->db->cache_delete('administrator', 'artikel_manager');
-          $this->session->set_flashdata("notif_insert" , "<script> alert('Insert Data Sukses'); </script>");
-          redirect('administrator/users');
-        } else {
-          $this -> insert();
-        }
-      }
+			if ($insert == true) {
+				// $this->db->cache_delete('administrator', 'artikel_manager');
+				$this->session->set_flashdata('notif_insert', "<script> alert('Insert Data Sukses'); </script>");
+				redirect('administrator/users');
+			} else {
+				$this->insert();
+			}
+		}
+	}
 
-  } /* End Insert */
+	public function update($id_user = null)
+	{
+		$data['users'] = $this->a_model->getUsers();
+		$id_to_update = $id_user;
 
-  // -----------------------------------------------------------------------
-  // Functions Update
-  function update( $id_user = NULL ) {
-    $data['users'] = $this -> a_model -> getUsers();
-    $id_to_update = $id_user;
+		$validations = [
+		  [
+			'field' => 'id_user',
+			'label' => 'ID User',
+			'rules' => 'required|trim',
+			],
 
-    $validations = array (
-          array (
-            'field'   =>  'id_user',
-            'label'   =>  'ID User',
-            'rules'   =>  'required|trim'
-            ),
+		  [
+			'field' => 'hak_akses',
+			'label' => 'Hak Akses',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'hak_akses',
-            'label'   =>  'Hak Akses',
-            'rules'   =>  'required|trim'
-            ),        
+		  [
+			'field' => 'nama_user',
+			'label' => 'Nama User',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'nama_user',
-            'label'   =>  'Nama User',
-            'rules'   =>  'required|trim'
-            ),    
+		  [
+			'field' => 'username',
+			'label' => 'Username',
+			'rules' => 'required|trim',
+			],
 
-          array (
-            'field'   =>  'username',
-            'label'   =>  'Username',
-            'rules'   =>  'required|trim'
-            ),
+		  [
+			'field' => 'password',
+			'label' => 'Password',
+			'rules' => 'required|md5',
+			],
+	  ];
 
-          array (
-            'field'   =>  'password',
-            'label'   =>  'Password',
-            'rules'   =>  'required|md5'
-            )
-      );
+		$this->form_validation->set_rules($validations);
 
-    $this->form_validation->set_rules($validations);
-    if ($this->form_validation -> run() == FALSE) {
-      // Jika Ada Kesalahan Buka Ini
-      $this->load->view('private/admin/dashboard', $data);
-    } else {
-      // Jika Tidak ada kesalahan, eksekusi perintah ini...
-        $data_valid = array (
-            'id_user'   => $this -> input -> post ('id_user'),
-            'hak_akses' => $this -> input -> post ('hak_akses'),
-            'nama_user' => $this -> input -> post ('nama_user'),
-            'username'  => $this -> input -> post ('username'),
-            'password'  => $this -> input -> post ('password')
-          );
+		if ($this->form_validation->run() == false) {
+			$this->load->view('private/admin/dashboard', $data);
+		} else {
+			$data_valid = [
+			'id_user' => $this->input->post('id_user'),
+			'hak_akses' => $this->input->post('hak_akses'),
+			'nama_user' => $this->input->post('nama_user'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+		  ];
 
-        $where = array('id_user' => $id_to_update);
+			$where = ['id_user' => $id_to_update];
 
-        $update = $this -> a_model -> QueryUpdate ('users', $data_valid, $where);
-        
-        if ($update == TRUE) {
-          // $this->db->cache_delete('administrator', 'artikel_manager');
-          $this->session->set_flashdata("notif_update" , "<script> alert('Update Data Sukses'); </script>");
-          redirect('administrator/users');
-        } else {
-          $this -> update();
-        }
-      }
+			$update = $this->a_model->QueryUpdate('users', $data_valid, $where);
 
-    } 
-    /* End Update */
+			if ($update == true) {
+				// $this->db->cache_delete('administrator', 'artikel_manager');
+				$this->session->set_flashdata('notif_update', "<script> alert('Update Data Sukses'); </script>");
+				redirect('administrator/users');
+			} else {
+				$this->update();
+			}
+		}
+	}
 
+	public function delete($id_user = null)
+	{
+		$where = ['id_user' => $id_user];
+		$delete = $this->a_model->QueryDelete('users', $where);
 
-  // -----------------------------------------------------------------------
-  // Functions Delete
-  function delete( $id_user = NULL ) {
-    // Validation Data
-    $where  = array('id_user' => $id_user);
-    $delete = $this -> a_model -> QueryDelete ('users', $where);
-
-    if ($delete == TRUE) {
-      // echo "Delete Sukses";
-      // $this->db->cache_delete_all();
-      redirect('administrator/users');
-    } else {
-      echo "Delete Gagal";
-    }
-  } /* End Delete */
-
-} /* End Users Class */
+		if ($delete == true) {
+			// echo "Delete Sukses";
+			// $this->db->cache_delete_all();
+			redirect('administrator/users');
+		} else {
+			echo 'Delete Gagal';
+		}
+	}
+}

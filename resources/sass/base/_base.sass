@@ -1,0 +1,107 @@
+//	Typography
+h1, h2, h3, h4, h5, h6
+  font-family: $heading-font
+
+h1
+  font-size: 2.2em
+
+h2
+  font-size: 2em
+
+h3
+  font-size: 1.8em
+
+h4
+  font-size: 1.6em
+
+h5
+  font-size: 1.4em
+
+h6
+  font-size: 1.3em
+
+p
+  font-family: $paragraph-font
+  font-weight: 500
+  font-size: 1.1em
+  line-height: 30px
+  margin: 0 0 20px 0
+
+em
+  font-style: italic
+
+strong
+  font-weight: bold
+
+hr
+  border: solid #ddd
+  border-width: 1px 0 0
+  clear: both
+  margin: 10px 0 30px
+  height: 0
+
+
+
+// List
+
+li.no-all
+  list-style-type: none
+
+
+// Code and pre
+pre, code
+  padding: 0
+  margin: 0
+
+
+
+
+// Links
+
+a
+  color: $link-color
+  text-decoration: none
+  outline: 0
+  
+a:hover, a:focus
+  color: lighten($link-color, 20%)
+  text-decoration: none
+
+
+
+// Selection colors (easy to forget)
+
+::selection
+  background: $selection-color
+  
+::-moz-selection
+  background: $selection-color
+  
+img::selection
+  background: transparent
+  
+img::-moz-selection
+  background: transparent
+  
+body
+  -webkit-tap-highlight-color: $selection-color
+
+
+
+// Basic Styles
+
+nav
+  font-family: $heading-font
+  font-size: 1.2em
+
+
+body
+  font-family: $paragraph-font
+  line-height: 1.6
+  color: $text-color
+  -webkit-font-smoothing: antialiased
+  -webkit-text-size-adjust: 100%
+
+footer
+  font-family: $heading-font
+  font-size: 80%

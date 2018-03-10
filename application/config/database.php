@@ -1,5 +1,6 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -60,26 +61,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $active_group = 'default';
-$query_builder = TRUE;
+$query_builder = true;
 
-$db['default'] = array(
-	'dsn'	=> '',
+$db['default'] = [
+	'dsn' => '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'root',
 	'database' => 'app-siakad',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => TRUE,
-	'cache_on' => FALSE,
+	'pconnect' => false,
+	'db_debug' => true,
+	'cache_on' => false,
 	'cachedir' => '',
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
 	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+	'encrypt' => false,
+	'compress' => false,
+	'stricton' => false,
+	'failover' => [],
+	'save_queries' => true,
+];

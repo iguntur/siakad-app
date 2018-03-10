@@ -1,4 +1,4 @@
-<tr class="<?php echo ($id_nilai == 0) ? "danger" : "" ; ?>">
+<tr class="<?php echo ($id_nilai == 0) ? 'danger' : ''; ?>">
     <td> <input type="hidden" name="nis[]" value="<?php echo $nis; ?>"> <?php echo $nis; ?></td>
     <td> <?php echo $nama_siswa; ?> </td>
     <td> <input value="<?php echo $tugas; ?>" name="tugas[]" type="number" min="0" max="100" class="form-input-nilai"> </td>

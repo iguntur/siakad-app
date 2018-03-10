@@ -37,11 +37,11 @@
 
     <tr>
       <td> <?php echo $no; ?> </td>
-      <td> <?php echo $n['jam_ke'] ?> </td>
-      <td> <?php echo $n['jam_mengajar'] ?> </td>
+      <td> <?php echo $n['jam_ke']; ?> </td>
+      <td> <?php echo $n['jam_mengajar']; ?> </td>
       <td>
-        <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-<?php echo $n ['id_jam_mengajar']; ?>" > <span> <i class="fa fa-pencil"></i></span>  Edit </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-<?php echo $n ['id_jam_mengajar']; ?>" > <span> <i class="fa fa-trash-o"></i></span>  Delete </button>
+        <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-<?php echo $n['id_jam_mengajar']; ?>" > <span> <i class="fa fa-pencil"></i></span>  Edit </button>
+        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-<?php echo $n['id_jam_mengajar']; ?>" > <span> <i class="fa fa-trash-o"></i></span>  Delete </button>
       </td>
     </tr>
 
@@ -49,8 +49,8 @@
     <?php $no++; ?>
 
     <!-- modal -->
-    <?php require ('modals_jm/modal_update.php'); ?>
-    <?php require ('modals_jm/modal_delete.php'); ?>
+    <?php require 'modals_jm/modal_update.php'; ?>
+    <?php require 'modals_jm/modal_delete.php'; ?>
 
     <?php endforeach; ?>
 

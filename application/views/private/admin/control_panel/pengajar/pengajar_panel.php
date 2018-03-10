@@ -28,11 +28,11 @@
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="allpengajar">
-                <?php require ('_table_all_pengajar.php'); ?>
+                <?php require '_table_all_pengajar.php'; ?>
               </div>
 
               <div role="tabpanel" class="tab-pane" id="add_pengajar">
-                <?php require ('_form_add_pengajar.php'); ?>
+                <?php require '_form_add_pengajar.php'; ?>
               </div>
             </div>
           </div>

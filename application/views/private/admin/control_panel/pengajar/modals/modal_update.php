@@ -7,13 +7,13 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/staff/update/'.$staff['id_pengajar']); ?>
-      <input readonly hidden name="id_pengajar" required="required" value="<?php echo $staff ['id_pengajar']; ?>" type="text">
+      <?php echo form_open('administrator/staff/update/' . $staff['id_pengajar']); ?>
+      <input readonly hidden name="id_pengajar" required="required" value="<?php echo $staff['id_pengajar']; ?>" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">NIP</span>
-            <input name="nip" required="required" value="<?php echo $staff ['nip']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nip" required="required" value="<?php echo $staff['nip']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
           <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <span id="inputSuccess2Status" class="sr-only">(success)</span>
@@ -22,21 +22,21 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Nama</span>
-            <input name="nama_pengajar" required="required" value="<?php echo $staff ['nama_pengajar']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_pengajar" required="required" value="<?php echo $staff['nama_pengajar']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">TTL</span>
-            <input name="ttl_location" value="<?php echo $staff ['ttl_location']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="ttl_location" value="<?php echo $staff['ttl_location']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="wd-addon"> &nbsp; </span>
-            <input name="ttl_date" value="<?php echo $staff ['ttl_date']; ?>" type="date" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" style="  position: relative; top: 0px; left: 70px; width: 198px;">
+            <input name="ttl_date" value="<?php echo $staff['ttl_date']; ?>" type="date" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" style="  position: relative; top: 0px; left: 70px; width: 198px;">
           </div>
         </div>
 
@@ -44,7 +44,7 @@
           <div class="input-group">
             <span class="input-group-addon wd-addon">Agama</span>
                 <select name="agama" class="form-control">
-                    <option value="<?php echo $staff ['agama']; ?>"><?php echo $staff ['agama']; ?></option>
+                    <option value="<?php echo $staff['agama']; ?>"><?php echo $staff['agama']; ?></option>
                     <option class="divider">Pilih Agama </option>
                     <option value="Islam"   >Islam      </option>
                     <option value="Kristen" >Kristen    </option>
@@ -60,7 +60,11 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Phone</span>
-            <input name="phone" value="<?php if($staff['phone'] == false ) { echo ''; } else { echo '0' . $staff['phone']; } ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="phone" value="<?php if ($staff['phone'] == false) {
+	echo '';
+} else {
+	echo '0' . $staff['phone'];
+} ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
@@ -93,14 +97,14 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Email</span>
-            <input name="email" value="<?php echo $staff ['email']; ?>" type="email" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="email" value="<?php echo $staff['email']; ?>" type="email" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Alamat</span>
-            <input name="alamat" value="<?php echo $staff ['alamat']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="alamat" value="<?php echo $staff['alamat']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
@@ -110,7 +114,7 @@
           <div class="input-group">
             <span class="input-group-addon wd-addon">Jabatan</span>
             <select name="jabatan" class="form-control">
-              <option value="<?php echo $staff ['jabatan']; ?>"><?php echo $staff ['jabatan']; ?></option>
+              <option value="<?php echo $staff['jabatan']; ?>"><?php echo $staff['jabatan']; ?></option>
               <option class="divider"> Pilih Jabatan </option>
               <?php foreach ($jabatan as $n): ?>
                 <option value="<?php echo $n['nama_jabatan']; ?>"> <?php echo $n['nama_jabatan']; ?> </option>
@@ -123,7 +127,7 @@
           <div class="input-group">
             <span class="input-group-addon wd-addon">Bidang Studi</span>
             <select name="guru_bid_studi" class="form-control">
-              <option value="<?php echo $staff ['guru_bid_studi']; ?>"> <?php echo $staff ['guru_bid_studi']; ?> </option>
+              <option value="<?php echo $staff['guru_bid_studi']; ?>"> <?php echo $staff['guru_bid_studi']; ?> </option>
               <option class="divider">Pilih Bidang Studi</option>
               <?php foreach ($mapel as $n): ?>
                 <option value="<?php echo $n['kode_mapel']; ?>">

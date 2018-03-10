@@ -47,14 +47,21 @@
         <td><?php echo $field['norma']; ?></td>
         <td><?php echo $field['hasil']; ?></td>
         <td><?php $grade = $field['hasil'];
-            if ($grade >= 90) {echo "A"; }
-            elseif ($grade >= 75) {echo "B"; }
-            elseif ($grade >= 60) { echo "C"; }
-            elseif ($grade >= 55) { echo "D"; }
-            else { echo "E"; }
-            ?>
+
+			if ($grade >= 90) {
+				echo 'A';
+			} elseif ($grade >= 75) {
+				echo 'B';
+			} elseif ($grade >= 60) {
+				echo 'C';
+			} elseif ($grade >= 55) {
+				echo 'D';
+			} else {
+				echo 'E';
+			}
+			?>
         </td>
-        <td> <?php echo $field['nip'] ?> | <?php echo $field['nama_pengajar'] ?>
+        <td> <?php echo $field['nip']; ?> | <?php echo $field['nama_pengajar']; ?>
         </td>
       </tr>
 

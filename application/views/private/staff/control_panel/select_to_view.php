@@ -31,8 +31,14 @@
             <label for="">Mata Pelajaran</label>
             <select id="sMapel" class="form-control" name="mapel" required="required">
               <!-- <option value="">Mata Pelajaran</option> -->
-              <option value="<?php if ($kode_mapel) { echo $kode_mapel; } ?>">
-              <?php if (empty($kode_mapel)) { echo 'Bidang Studi Tidak Tersedia'; }  else { echo $kode_mapel . ' | ' . $nama_mapel; } ?> </option>
+              <option value="<?php if ($kode_mapel) {
+	echo $kode_mapel;
+} ?>">
+              <?php if (empty($kode_mapel)) {
+	echo 'Bidang Studi Tidak Tersedia';
+} else {
+	echo $kode_mapel . ' | ' . $nama_mapel;
+} ?> </option>
             </select>
           </div>
         <button id="getRequestNilai" data-nip="<?php echo $nip; ?>" class="btn btn-lg btn-primary" style="margin-bottom: 20px;"><i class="fa fa-check"></i></button>

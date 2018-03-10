@@ -29,11 +29,11 @@
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="alluser">
-                <?php require ('_table_all_users.php'); ?>
+                <?php require '_table_all_users.php'; ?>
               </div>
 
               <div role="tabpanel" class="tab-pane" id="New">
-                <?php require ('_form_add_user.php'); ?>
+                <?php require '_form_add_user.php'; ?>
               </div>
             </div>
 

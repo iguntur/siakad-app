@@ -41,18 +41,18 @@ Tahun Angkatan : <?php echo $filter; ?> <br>
       <tr>
 
         <td> <?php echo $no; ?> </td>
-        <td> <?php echo $siswa ['nis'] ?> </td>
-        <td> <?php echo $siswa ['angkatan'] ?> </td>
-        <td> <a href="javascript:;" target="popup" onclick="window.open('<?php echo base_url() . 'administrator/report/nilai/'. $siswa ['nis']; ?>','name','width=auto,height=auto')">
+        <td> <?php echo $siswa['nis']; ?> </td>
+        <td> <?php echo $siswa['angkatan']; ?> </td>
+        <td> <a href="javascript:;" target="popup" onclick="window.open('<?php echo base_url() . 'administrator/report/nilai/' . $siswa['nis']; ?>','name','width=auto,height=auto')">
               <span class="btn btn-xs btn-primary"> <i class="fa fa-search-plus"></i> </span>
-              <?php echo $siswa ['nama_siswa']; ?>
+              <?php echo $siswa['nama_siswa']; ?>
               </a>
         </td>
-        <td> <?php echo $siswa ['gender']; ?> </td>
-        <td> <?php echo $siswa ['kelas']; ?> </td>
+        <td> <?php echo $siswa['gender']; ?> </td>
+        <td> <?php echo $siswa['kelas']; ?> </td>
 
       </tr>
-      <?php $no++ ?>
+      <?php $no++; ?>
 
   <?php endforeach; ?>
 </tbody>

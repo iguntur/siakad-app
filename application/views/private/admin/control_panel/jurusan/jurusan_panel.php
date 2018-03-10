@@ -32,10 +32,10 @@
 
     <tr>
       <td> <?php echo $no; ?> </td>
-      <td> <?php echo $n['nama_jurusan'] ?> - <?php echo $n['group_jurusan'] ?> </td>
+      <td> <?php echo $n['nama_jurusan']; ?> - <?php echo $n['group_jurusan']; ?> </td>
       <td>
-        <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-<?php echo $n ['id_jurusan']; ?>" > <span> <i class="fa fa-pencil"></i></span>  Edit </button>
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-<?php echo $n ['id_jurusan']; ?>" > <span> <i class="fa fa-trash-o"></i></span>  Delete </button>
+        <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-<?php echo $n['id_jurusan']; ?>" > <span> <i class="fa fa-pencil"></i></span>  Edit </button>
+        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-<?php echo $n['id_jurusan']; ?>" > <span> <i class="fa fa-trash-o"></i></span>  Delete </button>
       </td>
     </tr>
 
@@ -43,8 +43,8 @@
     <?php $no++; ?>
 
     <!-- modal -->
-    <?php require ('modals/modal_update.php'); ?>
-    <?php require ('modals/modal_delete.php'); ?>
+    <?php require 'modals/modal_update.php'; ?>
+    <?php require 'modals/modal_delete.php'; ?>
 
     <?php endforeach; ?>
 

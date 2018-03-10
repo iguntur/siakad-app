@@ -7,20 +7,24 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/users/aktivasi_siswa/'.$siswa['id_user']); ?>
+      <?php echo form_open('administrator/users/aktivasi_siswa/' . $siswa['id_user']); ?>
 
-        <input readonly hidden name="id_user" required="required" value="<?php echo $siswa ['id_user']; ?>" type="text">
-        <input readonly hidden name="nama_user" required="required" value="<?php echo $siswa ['nama_user']; ?>" type="text">
+        <input readonly hidden name="id_user" required="required" value="<?php echo $siswa['id_user']; ?>" type="text">
+        <input readonly hidden name="nama_user" required="required" value="<?php echo $siswa['nama_user']; ?>" type="text">
         <input readonly hidden name="hak_akses" required="required" value="3" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon">@</span>
             <input name="username" placeholder='Choose Username' required="required" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" value="<?php
-            $username = $siswa ['username'];
-            if (empty($username)) { echo ""; }
-            else { echo $username; }
-            ?>">
+			$username = $siswa['username'];
+
+			if (empty($username)) {
+				echo '';
+			} else {
+				echo $username;
+			}
+			?>">
 
           </div>
         </div>
@@ -28,7 +32,7 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-            <input readonly required="required" type="password" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" value="<?php echo $siswa ['password']; ?>">
+            <input readonly required="required" type="password" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" value="<?php echo $siswa['password']; ?>">
           </div>
         </div>
 

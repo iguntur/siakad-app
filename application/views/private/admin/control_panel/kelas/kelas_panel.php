@@ -21,7 +21,7 @@
           <select name="nama_jurusan" class="form-control control-kelas" required="required">
               <option value="">Pilih Jurusan</option>
               <?php foreach ($jurusan as $n): ?>
-              <option value="<?php echo $n['nama_jurusan'] ?> - <?php echo $n['group_jurusan'] ?>"><?php echo $n['nama_jurusan'] ?> - <?php echo $n['group_jurusan'] ?></option>
+              <option value="<?php echo $n['nama_jurusan']; ?> - <?php echo $n['group_jurusan']; ?>"><?php echo $n['nama_jurusan']; ?> - <?php echo $n['group_jurusan']; ?></option>
               <?php endforeach; ?>
           </select>
       </div>              
@@ -34,7 +34,7 @@
           <select name="wali_kelas" class="form-control control-kelas" required="required">
               <option value="Belum Ada Wali Kelas">Tentukan Wali Kelas</option>
               <?php foreach ($wali_kelas as $key_w): ?>
-              <option value="<?php echo $key_w['nip'] ?>"> <?php echo $key_w['nip']; ?> | <?php echo $key_w['nama_pengajar']; ?> </option>
+              <option value="<?php echo $key_w['nip']; ?>"> <?php echo $key_w['nip']; ?> | <?php echo $key_w['nama_pengajar']; ?> </option>
               <?php endforeach; ?>
           </select>
       </div>              
@@ -71,8 +71,8 @@
     <?php $no++; ?>
 
     <!-- modal -->
-    <?php require ('modals/modal_update.php'); ?>
-    <?php require ('modals/modal_delete.php'); ?>
+    <?php require 'modals/modal_update.php'; ?>
+    <?php require 'modals/modal_delete.php'; ?>
 
     <?php endforeach; ?>
 

@@ -47,7 +47,7 @@
       <td readonly hidden><input type="text" name="ID_Key[]" value="<?php echo $row['id_key']; ?>"></td>
       <td>
         <select name="getJamMengajar[]" class="form-control">
-          <option value="<?php echo $row['jam_ke'] ?>"><?php echo $row['jam_ke'] ?></option>
+          <option value="<?php echo $row['jam_ke']; ?>"><?php echo $row['jam_ke']; ?></option>
           <option value="">Jam &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</option>
           <?php foreach ($getJamMengajar as $jam): ?>
           <option value="<?php echo $jam['jam_ke']; ?>"><?php echo $jam['jam_ke']; ?></option>
@@ -56,7 +56,7 @@
       </td>
       <td>
         <select name="getMapelSenin[]" class="form-control">
-          <option value="<?php echo $row['senin'] ?>"><?php echo $row['senin'] ?></option>
+          <option value="<?php echo $row['senin']; ?>"><?php echo $row['senin']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>
@@ -66,7 +66,7 @@
       </td>
       <td>
         <select name="getMapelSelasa[]" class="form-control">
-          <option value="<?php echo $row['selasa'] ?>"><?php echo $row['selasa'] ?></option>
+          <option value="<?php echo $row['selasa']; ?>"><?php echo $row['selasa']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>
@@ -76,7 +76,7 @@
       </td>
       <td>
         <select name="getMapelRabu[]" class="form-control">
-          <option value="<?php echo $row['rabu'] ?>"><?php echo $row['rabu'] ?></option>
+          <option value="<?php echo $row['rabu']; ?>"><?php echo $row['rabu']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>
@@ -86,7 +86,7 @@
       </td>
       <td>
         <select name="getMapelKamis[]" class="form-control">
-          <option value="<?php echo $row['kamis'] ?>"><?php echo $row['kamis'] ?></option>
+          <option value="<?php echo $row['kamis']; ?>"><?php echo $row['kamis']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>
@@ -96,7 +96,7 @@
       </td>
       <td>
         <select name="getMapelJumat[]" class="form-control">
-          <option value="<?php echo $row['jumat'] ?>"><?php echo $row['jumat'] ?></option>
+          <option value="<?php echo $row['jumat']; ?>"><?php echo $row['jumat']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>
@@ -106,7 +106,7 @@
       </td>
       <td>
         <select name="getMapelSabtu[]" class="form-control">
-          <option value="<?php echo $row['sabtu'] ?>"><?php echo $row['sabtu'] ?></option>
+          <option value="<?php echo $row['sabtu']; ?>"><?php echo $row['sabtu']; ?></option>
           <option value="-- Tidak Ada --">Mata Pelajaran</option>
           <?php foreach ($getMapel as $mapel): ?>
           <option value="<?php echo $mapel['nama_mapel']; ?>"><?php echo $mapel['nama_mapel']; ?></option>

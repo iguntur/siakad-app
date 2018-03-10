@@ -7,13 +7,13 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/panel_siswa/update/'.$siswa['id_siswa']); ?>
-      <input readonly hidden name="id_siswa" required="required" value="<?php echo $siswa ['id_siswa']; ?>" type="text">
+      <?php echo form_open('administrator/panel_siswa/update/' . $siswa['id_siswa']); ?>
+      <input readonly hidden name="id_siswa" required="required" value="<?php echo $siswa['id_siswa']; ?>" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">NIS</span>
-            <input name="nis" required="required" value="<?php echo $siswa ['nis']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nis" required="required" value="<?php echo $siswa['nis']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
           <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <span id="inputSuccess2Status" class="sr-only">(success)</span>
@@ -22,35 +22,35 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Nama</span>
-            <input name="nama_siswa" required="required" value="<?php echo $siswa ['nama_siswa']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_siswa" required="required" value="<?php echo $siswa['nama_siswa']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Ayah</span>
-            <input placeholder="Nama Ayah" name="nama_ayah" value="<?php echo $siswa ['nama_ayah']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input placeholder="Nama Ayah" name="nama_ayah" value="<?php echo $siswa['nama_ayah']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Ibu</span>
-            <input placeholder="Nama Ibu" name="nama_ibu" value="<?php echo $siswa ['nama_ibu']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input placeholder="Nama Ibu" name="nama_ibu" value="<?php echo $siswa['nama_ibu']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">TTL</span>
-            <input name="ttl_location" value="<?php echo $siswa ['ttl_location']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="ttl_location" value="<?php echo $siswa['ttl_location']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="wd-addon"> &nbsp; </span>
-            <input name="ttl_date" value="<?php echo $siswa ['ttl_date']; ?>" type="date" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" style="  position: relative; top: 0px; left: 70px; width: 198px;">
+            <input name="ttl_date" value="<?php echo $siswa['ttl_date']; ?>" type="date" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" style="  position: relative; top: 0px; left: 70px; width: 198px;">
           </div>
         </div>
 
@@ -74,7 +74,11 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Phone</span>
-            <input name="phone" value="<?php if($siswa['phone'] == false ) { echo ''; } else { echo '0' . $siswa ['phone']; } ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="phone" value="<?php if ($siswa['phone'] == false) {
+	echo '';
+} else {
+	echo '0' . $siswa['phone'];
+} ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
@@ -136,14 +140,14 @@
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Email</span>
-            <input name="email" value="<?php echo $siswa ['email']; ?>" type="email" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="email" value="<?php echo $siswa['email']; ?>" type="email" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Alamat</span>
-            <input name="alamat" value="<?php echo $siswa ['alamat']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="alamat" value="<?php echo $siswa['alamat']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 

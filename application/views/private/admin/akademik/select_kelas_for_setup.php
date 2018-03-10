@@ -23,7 +23,7 @@
                 <p class="nama-wali-kelas"><span><?php echo $field['wali_kelas']; ?></span></p>
 
                 <!-- Pane Select Kelas -->
-                <?php echo form_open('administrator/jadwal_akademik/setup', array('id' => 'foobar')); ?>
+                <?php echo form_open('administrator/jadwal_akademik/setup', ['id' => 'foobar']); ?>
                     <input readonly hidden type="text" name="id_kelas" value="<?php echo $field['id_kelas']; ?>">
                     <select required="required" name="tahun_ajaran" class="form-control select-foo">
                       <option value="">Tahun Ajaran</option>
@@ -52,7 +52,7 @@
                 <p class="nama-wali-kelas"><span><?php echo $field['wali_kelas']; ?></span></p>
 
                 <!-- Pane Select Kelas -->
-                <?php echo form_open('administrator/jadwal_akademik/setup', array('id' => 'foobar')); ?>
+                <?php echo form_open('administrator/jadwal_akademik/setup', ['id' => 'foobar']); ?>
                     <input readonly hidden type="text" name="id_kelas" value="<?php echo $field['id_kelas']; ?>">
                     <select required="required" name="tahun_ajaran" class="form-control select-foo">
                       <option value="">Tahun Ajaran</option>
@@ -80,7 +80,7 @@
                 <p class="nama-wali-kelas"><span><?php echo $field['wali_kelas']; ?></span></p>
 
                 <!-- Pane Select Kelas -->
-                <?php echo form_open('administrator/jadwal_akademik/setup', array('id' => 'foobar')); ?>
+                <?php echo form_open('administrator/jadwal_akademik/setup', ['id' => 'foobar']); ?>
                     <input readonly hidden type="text" name="id_kelas" value="<?php echo $field['id_kelas']; ?>">
                     <select required="required" name="tahun_ajaran" class="form-control select-foo">
                       <option value="">Tahun Ajaran</option>

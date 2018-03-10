@@ -24,19 +24,19 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="dft_jadwal">
-              <?php require ('_daftar_jadwal_mengajar.php'); ?>
+              <?php require '_daftar_jadwal_mengajar.php'; ?>
                 </div>
 
             <div role="tabpanel" class="tab-pane" id="dft_bid_studi">
-              <?php require ('_daftar_bidang_studi.php'); ?>
+              <?php require '_daftar_bidang_studi.php'; ?>
                 </div>
 
             <div role="tabpanel" class="tab-pane" id="dft_kelas">
-              <?php require ('_daftar_kelas.php'); ?>
+              <?php require '_daftar_kelas.php'; ?>
                 </div>
 
             <div role="tabpanel" class="tab-pane" id="dft_nilai">
-              <?php require ('_daftar_nilai.php'); ?>
+              <?php require '_daftar_nilai.php'; ?>
                 </div>
           </div>
 

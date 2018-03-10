@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <!-- Base Meta Tag -->
-    <title><?php echo $myAccount ?> - Sistem Informasi Akademik </title>
+    <title><?php echo $myAccount; ?> - Sistem Informasi Akademik </title>
     <meta name="description" content="Meta Descriptions Disini">
     <meta name="keyword" keyword="Meta key disini">
 

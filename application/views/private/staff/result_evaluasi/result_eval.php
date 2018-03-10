@@ -23,18 +23,32 @@
                         <td> <?php echo $value['norma']; ?>          </td>
                         <td> <?php echo $value['hasil']; ?>          </td>
                         <td class="grade grade-<?php $grade = $value['hasil'];
-                                if ($grade >= 90) {echo 'A'; }
-                                elseif ($grade >= 75) {echo 'B'; }
-                                elseif ($grade >= 60) { echo 'C'; }
-                                elseif ($grade >= 55) { echo 'D'; }
-                                else { echo 'E'; }
-                            ?>"> <span class="span-grade"><?php $grade = $value['hasil'];
-                                if ($grade >= 90) {echo "A"; }
-                                elseif ($grade >= 75) {echo "B"; }
-                                elseif ($grade >= 60) { echo "C"; }
-                                elseif ($grade >= 55) { echo "D"; }
-                                else { echo "E"; }
-                            ?></span>
+
+								if ($grade >= 90) {
+									echo 'A';
+								} elseif ($grade >= 75) {
+									echo 'B';
+								} elseif ($grade >= 60) {
+									echo 'C';
+								} elseif ($grade >= 55) {
+									echo 'D';
+								} else {
+									echo 'E';
+								}
+							?>"> <span class="span-grade"><?php $grade = $value['hasil'];
+
+								if ($grade >= 90) {
+									echo 'A';
+								} elseif ($grade >= 75) {
+									echo 'B';
+								} elseif ($grade >= 60) {
+									echo 'C';
+								} elseif ($grade >= 55) {
+									echo 'D';
+								} else {
+									echo 'E';
+								}
+							?></span>
                         </td>
                 </tr>
 <?php endforeach; ?>

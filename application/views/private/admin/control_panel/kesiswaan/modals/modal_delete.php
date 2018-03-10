@@ -7,14 +7,14 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/panel_siswa/delete/'.$siswa['id_siswa']); ?>
-      <input readonly hidden name="id_siswa" required="required" value="<?php echo $siswa ['id_siswa']; ?>" type="text">
-      <input readonly hidden name="id_user" required="required" value="<?php echo $siswa ['id_user']; ?>" type="text">
+      <?php echo form_open('administrator/panel_siswa/delete/' . $siswa['id_siswa']); ?>
+      <input readonly hidden name="id_siswa" required="required" value="<?php echo $siswa['id_siswa']; ?>" type="text">
+      <input readonly hidden name="id_user" required="required" value="<?php echo $siswa['id_user']; ?>" type="text">
       
         <div class="form-group has-error has-feedback">
           <div class="input-group">
             <span class="input-group-addon">ID</span>
-            <input readonly="readonly" name="nis" required="required" value="<?php echo $siswa ['nis']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input readonly="readonly" name="nis" required="required" value="<?php echo $siswa['nis']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
           <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
           <span id="inputWarning2Status" class="sr-only">(warning)</span>
@@ -23,7 +23,7 @@
         <div class="form-group has-error has-feedback">
           <div class="input-group">
             <span class="input-group-addon">@</span>
-            <input readonly="readonly" name="username" required="required" value="<?php echo $siswa ['nama_siswa']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input readonly="readonly" name="username" required="required" value="<?php echo $siswa['nama_siswa']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
           <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
           <span id="inputWarning2Status" class="sr-only">(warning)</span>

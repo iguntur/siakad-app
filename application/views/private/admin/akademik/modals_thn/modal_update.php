@@ -7,13 +7,13 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/tahun_ajaran/update/'.$n['id_thn_ajaran']); ?>
-      <input readonly hidden name="id_thn_ajaran" required="required" value="<?php echo $n ['id_thn_ajaran']; ?>" type="text">
+      <?php echo form_open('administrator/tahun_ajaran/update/' . $n['id_thn_ajaran']); ?>
+      <input readonly hidden name="id_thn_ajaran" required="required" value="<?php echo $n['id_thn_ajaran']; ?>" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Tahun Ajaran</span>
-            <input name="nama_tahun_ajaran" required="required" value="<?php echo $n ['nama_tahun_ajaran']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_tahun_ajaran" required="required" value="<?php echo $n['nama_tahun_ajaran']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 

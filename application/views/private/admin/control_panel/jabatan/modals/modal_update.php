@@ -7,13 +7,13 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/jabatan/update/'.$n['id_jabatan']); ?>
-      <input readonly hidden name="id_jabatan" required="required" value="<?php echo $n ['id_jabatan']; ?>" type="text">
+      <?php echo form_open('administrator/jabatan/update/' . $n['id_jabatan']); ?>
+      <input readonly hidden name="id_jabatan" required="required" value="<?php echo $n['id_jabatan']; ?>" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Jurusan</span>
-            <input name="nama_jabatan" required="required" value="<?php echo $n ['nama_jabatan']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_jabatan" required="required" value="<?php echo $n['nama_jabatan']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 

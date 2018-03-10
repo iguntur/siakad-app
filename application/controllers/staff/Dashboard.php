@@ -1,139 +1,76 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends MY_Controller {
-/*------------------------------------------------------------------*/
-public function __construct() {
-parent::__construct();
-if ( $this->session->userdata('hak_akses') != 2 ) {
-    $this->session->set_flashdata('error', "<script> alert('Anda Bukan Guru'); </script>");
-    redirect( 'login' );
-}
-/***
- | Session 
-***/
-$eq = $this->session->userdata('nip');
-$check = $this->db->query("SELECT guru_bid_studi FROM tabel_pengajar
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Dashboard extends MY_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+
+		if ($this->session->userdata('hak_akses') != 2) {
+			$this->session->set_flashdata('error', "<script> alert('Anda Bukan Guru'); </script>");
+			redirect('login');
+		}
+		// | Session
+		$eq = $this->session->userdata('nip');
+		$check = $this->db->query("SELECT guru_bid_studi FROM tabel_pengajar
                           WHERE nip = '$eq'
         ");
+	}
 
-// echo "<pre>";
-// print_r ($check);
-// echo "</pre>";
+	public function index()
+	{
+		$data['myAccount'] = $this->session->userdata('nama_awal');
+		$data['nip'] = $this->session->userdata('nip');
 
+		$this->load->view('private/staff/dashboard', $data);
+	}
 
+	public function jadwal_akademik()
+	{
+		$data['myAccount'] = $this->session->userdata('nama_awal');
+		$data['tahun_ajaran'] = $this->a_model->getTahunAjaran();
+		$data['kelas_jurusan'] = $this->a_model->getKelas();
 
+		$this->load->view('private/staff/view_jadwal_akademik', $data);
+	}
 
-/* End Construct ------------------------------------------------------------------*/ }
+	public function showJadwalAkademik()
+	{
+		if ($_GET['id_kelas'] != null) {
+			$id_kelas = $_GET['id_kelas'];
+			$tahun_ajaran = $_GET['tahun_ajaran'];
+			$semester = $_GET['semester'];
 
-// Function / Method Index
-public function index() {
-/***
- | Data Session
- | -----------------
- | Account Name
- | Mete Title
- | Parameter
- | -----------------
-***/
-$data['myAccount'] = $this->session->userdata('nama_awal');
-$data['nip'] = $this->session->userdata('nip');
- 
-/***
- | -----------------
- | Parse All Data To template
- | -----------------
-**/
-$this->load->view('private/staff/dashboard', $data);
-/* End Index ------------------------------------------------------------------*/ }
-public function jadwal_akademik() {
-/***
- | Data Session
- | -----------------
- | Account Name
- | Mete Title
- | Parameter
- | -----------------
-***/
-$data['myAccount'] = $this->session->userdata('nama_awal');
- 
+			$kelas = $this->db->query("SELECT * FROM kelas WHERE id_kelas = '$id_kelas'")->result_array();
 
-/***
- | Load Model 
- | Tahun Ajaran
- | Kelas & Jurusan
- | For Select
- | Get Data jadwal
-***/
-$data['tahun_ajaran']  = $this->a_model->getTahunAjaran();
-$data['kelas_jurusan'] = $this->a_model->getKelas();
+			foreach ($kelas as $value) {
+				$data['kelas'] = $value['kelas_jurusan'];
+			}
 
-/***
- | -----------------
- | Parse All Data To template
- | -----------------
-**/
-$this->load->view('private/staff/view_jadwal_akademik', $data);
-/* End Jadwal Akademik ------------------------------------------------------------------*/ }
-// Show Jadwal On Dashboard
-public function showJadwalAkademik() {
-if ($_GET['id_kelas'] != null) {
+			$jaGlobal = $this->a_model->getJadwalGlobal($id_kelas, $tahun_ajaran, $semester);
 
-$id_kelas     = $_GET['id_kelas'];
-$tahun_ajaran = $_GET['tahun_ajaran'];
-$semester     = $_GET['semester'];
+			if ($jaGlobal == false) {
+				$data['tahun_ajaran'] = 'Jadwal Ini Belum Tersedia';
+				$data['semester'] = 'Hubungi Administrator Untuk Konfirmasi';
+				$this->load->view('private/admin/akademik/result/result_jadwal_akademik_unvalid', $data);
+			} else {
+				foreach ($jaGlobal as $value) {
+					$id_key = $value['id_key']; // Get Data Jadwal Weekly
+					$data['tahun_ajaran'] = $value['tahun_ajaran'];
+					$data['semester'] = $value['semester'];
+				}
 
-/***
- | ---------------------
- | A1.
- | Get data bedasarkan id_kelas di tabel kelas
- | ---------------------
- | A2.
- | Get data jadwal bedasarkan tahun ajaran, semester, id_kelas
- | pada tabel jadwal_global
- | A3.
- | dapatkan id_jadwal_global untuk memanggil jadwal weekly
- | ---------------------
-***/
-// A1
-$kelas = $this->db->query("SELECT * FROM kelas WHERE id_kelas = '$id_kelas'") -> result_array();
-foreach ($kelas as $value) {
-  $data['kelas'] = $value['kelas_jurusan'];
-};
+				$data['show_jadwal'] = $this->a_model->getJadwalWeekly($id_key);
+				$this->load->view('private/admin/akademik/result/result_jadwal_akademik', $data);
+			}
+		}
 
-// A2
-$jaGlobal = $this->a_model->getJadwalGlobal($id_kelas, $tahun_ajaran, $semester);
-if ($jaGlobal == false) {
-    $data['tahun_ajaran'] = "Jadwal Ini Belum Tersedia";
-    $data['semester']     = "Hubungi Administrator Untuk Konfirmasi";
-    $this->load->view('private/admin/akademik/result/result_jadwal_akademik_unvalid', $data);
-} else {
-    foreach ($jaGlobal as $value) {
-            $id_key               = $value['id_key']; // Get Data Jadwal Weekly
-            $data['tahun_ajaran'] = $value['tahun_ajaran'];
-            $data['semester']     = $value['semester'];
-    };
+		return false;
+	}
 
-    // A3
-    $data['show_jadwal'] = $this->a_model->getJadwalWeekly($id_key);
-    $this->load->view('private/admin/akademik/result/result_jadwal_akademik', $data);
+	public function getSession()
+	{
+	}
 }
-
-} // End IF
-// Default Return False
-return false;
-/* End GET VIEW JADWAL ------------------------------------------------------------------*/ }
-// Check Session
-function getSession() {
-    // echo "OKE";
-/* End Cek Session ------------------------------------------------------------------*/ }
-
-
-
-
-
-
-
-/* End of file guru.php */
-/* Location: ./application/controllers/dashboard/guru.php */
-/* END Controller ---------------------------------------------------------------------*/  }

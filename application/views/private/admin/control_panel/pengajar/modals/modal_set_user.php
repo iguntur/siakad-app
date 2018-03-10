@@ -7,7 +7,7 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/users/aktivasi_staff/'.$staff['id_user']); ?>
+      <?php echo form_open('administrator/users/aktivasi_staff/' . $staff['id_user']); ?>
 
         <input readonly hidden name="id_user" required="required" value="<?php echo $staff['id_user']; ?>" type="text">
         <input readonly hidden name="nama_user" required="required" value="<?php echo $staff['nama_user']; ?>" type="text">
@@ -17,10 +17,14 @@
           <div class="input-group">
             <span class="input-group-addon">@</span>
             <input name="username" required="required" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status" value="<?php
-            $username = $staff['username'];
-            if (empty($username)) { echo ""; }
-            else { echo $username; }
-            ?>">
+			$username = $staff['username'];
+
+			if (empty($username)) {
+				echo '';
+			} else {
+				echo $username;
+			}
+			?>">
 
           </div>
         </div>

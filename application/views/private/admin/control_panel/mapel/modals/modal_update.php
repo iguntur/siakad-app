@@ -7,20 +7,20 @@
       </div>
 
       <div class="modal-body">
-      <?php echo form_open('administrator/mapel/update/'.$n['id_mapel']); ?>
-      <input readonly hidden name="id_mapel" required="required" value="<?php echo $n ['id_mapel']; ?>" type="text">
+      <?php echo form_open('administrator/mapel/update/' . $n['id_mapel']); ?>
+      <input readonly hidden name="id_mapel" required="required" value="<?php echo $n['id_mapel']; ?>" type="text">
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Kode MP</span>
-            <input name="kode_mapel" required="required" value="<?php echo $n ['kode_mapel']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="kode_mapel" required="required" value="<?php echo $n['kode_mapel']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 
         <div class="form-group has-success has-feedback">
           <div class="input-group">
             <span class="input-group-addon wd-addon">Nama MP</span>
-            <input name="nama_mapel" required="required" value="<?php echo $n ['nama_mapel']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+            <input name="nama_mapel" required="required" value="<?php echo $n['nama_mapel']; ?>" type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
           </div>
         </div>
 

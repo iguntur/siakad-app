@@ -1,5 +1,6 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -51,17 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
-
-
-
+$route['translate_uri_dashes'] = false;
 
 // ----------------------------------------------------------
-// Routing Administrator 
+// Routing Administrator
 $route['admin'] = 'administrator/dashboard';
 $route['staff'] = 'staff/dashboard';
 $route['siswa'] = 'siswa/dashboard';
-
 
 // Route Kenaikan Kelas
 $route['staff/setup-naik-kelas'] = 'staff/control_kenaikan_kelas/index';

@@ -29,11 +29,11 @@
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="allsiswa">
-                <?php require ('_table_all_siswa.php'); ?>
+                <?php require '_table_all_siswa.php'; ?>
               </div>
 
               <div role="tabpanel" class="tab-pane" id="add_siswa">
-                <?php require ('_form_add_siswa.php'); ?>
+                <?php require '_form_add_siswa.php'; ?>
               </div>
             </div>
 

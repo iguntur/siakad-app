@@ -18,7 +18,11 @@
     <br>
 
     <label style="width: 100px">Bidang Studi</label>
-    <span><?php if ($wali_kelas['guru_bid_studi'] == false ) { echo "Bidang Studi Tidak Tersedia"; } else { echo $wali_kelas['guru_bid_studi']; } ?></span>
+    <span><?php if ($wali_kelas['guru_bid_studi'] == false) {
+	echo 'Bidang Studi Tidak Tersedia';
+} else {
+	echo $wali_kelas['guru_bid_studi'];
+} ?></span>
 
 </div>
 <hr>
